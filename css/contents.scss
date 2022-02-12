@@ -1,0 +1,228 @@
+@charset "UTF-8";
+/*==================================================================
+# 設定
+================================================================= */
+
+/* 色
+-------------------------------------------------------------*/
+$color-text-base: #121212;
+
+
+/* レイアウト値
+-------------------------------------------------------------*/
+$layout-width-canvas: 1600px;
+$layout-width-inner: 1210px;
+
+
+/* 階層
+-------------------------------------------------------------*/
+$layer: (
+  modal: 100, // モダール
+  drawer: 40, // ドロワー
+  floating: 30, // フローティングアイテム
+  header: 20, // ヘッダー
+  footer: 10, // フッター
+  default: 1,
+);
+
+/* ブレークポイント
+-------------------------------------------------------------*/
+ // マップ型変数breakpointsを定義
+$breakpoints: (
+    'sm': 'screen and (max-width: 767px)',
+    'md': 'screen and (min-width: 768px)',
+) !default;
+
+/* メディアクエリー
+-------------------------------------------------------------*/
+@mixin  mq($breakpoint: md) {
+// map-get(マップ変数型,キー)で値を取得
+@media #{map-get($breakpoints, $breakpoint)} {
+    // この中をカスタムできる
+    @content;
+}
+
+}
+
+/*==================================================================
+# 初期化
+================================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'sans-serif';
+  font-size: 1.44rem;
+  color: $color-text-base;
+  line-height: 1.69444;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+  width: 100%;
+
+  &.noscroll {
+      overflow: hidden;
+  }
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+  height: auto;
+  border: none;
+}
+
+
+/*==================================================================
+#  補完クラス
+================================================================= */
+
+/* PCだけ非表示
+-------------------------------------------------------------*/
+.hidden-pc {
+  @include mq('md') {
+    display: none;
+  }
+}
+
+/*タブレットだけ非表示 
+-------------------------------------------------------------*/
+.hidden-md {
+  @include mq('md') {
+    display: none;
+  }
+}
+
+/*スマホだけ非表示 
+-------------------------------------------------------------*/
+.hidden-sm {
+  @include mq('sm') {
+    display: none;
+  }
+}
+
+/* セクション
+-------------------------------------------------------------*/
+.section {
+    margin-top: 100px;
+}
+.section-title {
+    font-size: 3.6rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* インナー
+-------------------------------------------------------------*/
+.inner {
+    max-width: $layout-width-inner;
+    margin: 0 auto;
+    padding: 0 40px;
+    box-sizing: content-box;
+}
+
+
+/*==================================================================
+# header
+================================================================= */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    width: 100%;
+}
+.header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+.header__logo {
+    width: 175px;
+}
+.header__nav {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    background-color: $color-text-base;
+    width: 300px;
+    height: 100%;
+    padding: 60px 25px;
+}
+.header__list {
+    border-top: 1px solid #fff;
+}
+.header__item {
+    padding: 20px 0;
+    border-bottom: 1px solid #fff;
+}
+.header__item__link {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.header__sns__list {
+    margin-top: 60px;
+}
+.header__sns__item {
+    padding: 5px 0;
+}
+.header__sns__item__link {
+    color: #fff;
+}
+.burger-btn {
+
+}
+.bars {
+
+}
+.bar {
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: #333;
+}
+.bar__top {
+    margin-bottom: 8px;
+}
+.bar__mid {
+    margin-bottom: 8px;
+}
+.bar__bottom {
+
+}
+.musk {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .7;
+    display: none;
+}
+
+/*==================================================================
+# main
+================================================================= */
+
+
+/*==================================================================
+# footer
+================================================================= */
